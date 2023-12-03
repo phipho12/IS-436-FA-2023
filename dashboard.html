@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .dashboard {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+
+        .ticket-list {
+            width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: scroll;
+            height: 500px;
+        }
+
+        .ticket-item {
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .ticket-details {
+            width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+    </style>
+</head>
+<body>
+    <button onclick="goToHomePage('ticket-004')">Go Home</button>
+    <div class="dashboard">
+        <div class="ticket-list">
+            <h2>Tickets</h2>
+            <div class="ticket-item" onclick="showTicketDetails('001')">
+                <p><strong>Ticket ID:</strong> 001</p>
+                <p><strong>Customer:</strong> Alice Johnson</p>
+                <p><strong>Status:</strong> Open</p>
+                <p><strong>Date:</strong> November 30, 2023</p>
+            </div>
+            <div class="ticket-item" onclick="showTicketDetails('002')">
+                <p><strong>Ticket ID:</strong> 002</p>
+                <p><strong>Customer:</strong> Marcus Rodriguez</p>
+                <p><strong>Status:</strong> In Progress</p>
+                <p><strong>Date:</strong> December 11, 2023</p>
+            </div>
+            <div class="ticket-item" onclick="showTicketDetails('003')">
+                <p><strong>Ticket ID:</strong> 003</p>
+                <p><strong>Customer:</strong> Emily Turner</p>
+                <p><strong>Status:</strong> Closed</p>
+                <p><strong>Date:</strong> November 23, 2023</p>
+            </div>
+            <div class="ticket-item" onclick="showTicketDetails('004')">
+                <p><strong>Ticket ID:</strong> 004</p>
+                <p><strong>Customer:</strong> Dylan Patel</p>
+                <p><strong>Status:</strong> Closed</p>
+                <p><strong>Date:</strong> November 15, 2023</p>
+            </div>
+        </div>
+
+        <div class="ticket-details">
+            <h2>Ticket Details</h2>
+            <div id="ticketDetailContainer" class="ticket-details-container">
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        function showTicketDetails(ticketId) {
+            var ticketDetails = {
+                '001': {
+                    customer: 'Alice Johnson',
+                    status: 'Open',
+                    description: 'Having trouble connecting to the Internet',
+                    date: 'November 30, 2023',
+                    resolution: 'N/A',
+                },
+                '002': {
+                    customer: 'Marcus Rodriguez',
+                    status: 'In Progress',
+                    description: 'My computer crashes everytime I launch the software.',
+                    date: 'December 11, 2023',
+                    resolution: 'No fix yet.',
+                },
+                '003': {
+                    customer: 'Emily Turner',
+                    status: 'Closed',
+                    description: 'My computer gets really slow when trying to browse the internet.',
+                    date: 'November 23, 2023',
+                    resolution: 'Upgrade RAM, close unnecessary programs, run antivirus scans, and perform regular system maintenance tasks like disk cleanup and defragmentation.',
+                },
+                '004': {
+                    customer: 'Dylan Patel',
+                    status: 'Closed',
+                    description: 'I can Install this program from the website.',
+                    date: 'November 15, 2023',
+                    resolution: 'Update software to the latest version, check for system requirements, reinstall the application, or seek support from the software vendor',
+                }
+            };
+            var ticketDetailContainer = document.getElementById('ticketDetailContainer');
+            ticketDetailContainer.innerHTML = `
+                <div class="ticket-details-item">
+                    <p><strong>Ticket ID:</strong> ${ticketId}</p>
+                    <p><strong>Customer:</strong> ${ticketDetails[ticketId].customer}</p>
+                    <p><strong>Status:</strong> ${ticketDetails[ticketId].status}</p>
+                    <p><strong>Date:</strong> ${ticketDetails[ticketId].date}</p>
+                    <p><strong>Description:</strong> ${ticketDetails[ticketId].description}</p>
+                    <p><strong>Resolution:</strong> ${ticketDetails[ticketId].resolution}</p>
+                </div>
+            `;
+        }
+        function goToHomePage() {
+                    window.location.href = 'Home Page.html';
+                }
+    </script>
+
+</body>
+</html>

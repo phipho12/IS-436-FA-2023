@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button onclick="goToHomePage('ticket-004')">Go Home</button>
+    <div class="ticket-form">
+        <h2>Analytics</h2>
+        
+        <div class="analytics-data">
+            <h3>Monthly Ticket Resolution Time</h3>
+            <canvas id="resolutionTimeChart" width="400" height="200"></canvas>
+        </div>
+
+        <div class="analytics-data">
+            <h3>Common Issues</h3>
+            <strong> Connectivity: </strong>30%
+            <br>
+           <strong>Unstable Software:</strong> 25%
+            <br>
+            <strong> Installation:</strong> 20%
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Placeholder data for analytics chart
+        var ctx = document.getElementById('resolutionTimeChart').getContext('2d');
+        var resolutionTimeChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June','July'],
+                datasets: [{
+                    label: 'Resolution Time (hours)',
+                    data: [12, 15, 10, 18, 14, 16,20],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        function goToHomePage() {
+                    window.location.href = 'Home Page.html';
+                }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Status</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="ticket-status-form">
+        <h2>Check Your Ticket Status</h2>
+        <form id="ticketStatusForm">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Check Status</button>
+        </form>
+
+        <div id="ticketStatusResult" class="ticket-status-result">
+            <!-- Ticket status will be displayed here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('ticketStatusForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const userEmail = document.getElementById('email').value;
+            const ticketInfo = [
+                { id: '001', status: 'Open', problem: 'Having trouble connecting to the Internet', solution: 'Reboot the router.' },
+            ];
+
+            displayTicketStatus(userEmail, ticketInfo);
+        });
+
+        function displayTicketStatus(email, tickets) {
+            const resultContainer = document.getElementById('ticketStatusResult');
+            resultContainer.innerHTML = '';
+
+            const userEmailHeading = document.createElement('h3');
+            userEmailHeading.textContent = `Tickets for ${email}`;
+            resultContainer.appendChild(userEmailHeading);
+
+            if (tickets.length === 0) {
+                const noTicketsMessage = document.createElement('p');
+                noTicketsMessage.textContent = 'No tickets found for this email.';
+                resultContainer.appendChild(noTicketsMessage);
+            } else {
+                const ticketList = document.createElement('ul');
+                tickets.forEach(ticket => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<strong>Ticket ID:</strong> ${ticket.id}, <strong>Status:</strong> ${ticket.status}, <strong>Problem:</strong> ${ticket.problem}, <strong>Solution:</strong> ${ticket.solution}`;
+                    ticketList.appendChild(listItem);
+                });
+                resultContainer.appendChild(ticketList);
+            }
+        }
+    </script>
+
+</body>
+</html>

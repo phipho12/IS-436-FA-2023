@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Detail/Management</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .ticket-container {
+            height: 600px;
+            overflow-y: scroll;
+        }
+
+        .ticket-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+    
+        .arrow {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+        }
+    
+        .arrow::after {
+            content: '\25B6';
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .expanded .arrow::after {
+            transform: rotate(90deg);
+        }
+    
+        .details {
+            display: none;
+        }
+    
+        .expanded .details {
+            display: block;
+        }
+    
+        .ticket-actions select {
+            width: 100px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+    
+        .ticket-actions textarea {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .go-home-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .go-home-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button class="go-home-button" onclick="goToHomePage()">Go to Home Page</button>
+    <div class="dashboard">
+        <div class="ticket-container"> <!-- Wrap ticket list in a container -->
+            <div class="ticket-list">
+                <h2>Ticket Detail/Management</h2>
+                
+                <div class="ticket-item" id="ticket-001">
+                <div class="arrow" onclick="toggleTicketDetails('ticket-001')"></div>
+                <p><span style="font-weight: bold;">Ticket ID:</span> 001</p>
+                <div class="details">
+                    <span style="font-weight: bold;"><label for="assign-employee">Description:</span> Having trouble connecting to the Internet'</label>
+                    <p> <br></p>
+                    <!-- Additional elements for ticket status, assigning to an employee, etc. -->
+                    <span style="font-weight: bold;"><label for="ticket-status">Change Status:</label></span>
+                    <select id="ticket-status">
+                        <option value="open">Open</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="closed">Closed</option>
+                    </select>
+
+                    <span style="font-weight: bold;"><label for="assign-employee">Assign to Employee:</label></span>
+                    <input type="text" id="assign-employee" placeholder="Employee Name">
+
+                    <span style="font-weight: bold;"><label for="resolution">Resolution:</label></span>
+                    <textarea id="resolution" placeholder="Enter resolution..." rows="4"></textarea>
+                    
+                    <div class="ticket-actions">
+                        <button onclick="markAsComplete('ticket-001')">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-item" id="ticket-002">
+                <div class="arrow" onclick="toggleTicketDetails('ticket-002')"></div>
+                <p><span style="font-weight: bold;">Ticket ID:</span> 002</p>
+                <div class="details">
+                    <span style="font-weight: bold;"><label for="assign-employee">Description:</span> My computer crashes everytime I launch the software.</label>
+                    <p> <br></p>
+                    <!-- Additional elements for ticket status, assigning to an employee, etc. -->
+                    <span style="font-weight: bold;"><label for="ticket-status">Change Status:</label></span>
+                    <select id="ticket-status">
+                        <option value="open">Open</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="closed">Closed</option>
+                    </select>
+
+                    <span style="font-weight: bold;"><label for="assign-employee">Assign to Employee:</label></span>
+                    <input type="text" id="assign-employee" placeholder="Employee Name">
+
+                    <span style="font-weight: bold;"><label for="resolution">Resolution:</label></span>
+                    <textarea id="resolution" placeholder="Enter resolution..." rows="4"></textarea>
+                    
+                    <div class="ticket-actions">
+                        <button onclick="markAsComplete('ticket-002')">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-item" id="ticket-003">
+                <div class="arrow" onclick="toggleTicketDetails('ticket-003')"></div>
+                <p><span style="font-weight: bold;">Ticket ID:</span> 003</p>
+                <div class="details">
+                    <span style="font-weight: bold;"><label for="assign-employee">Description:</span> My computer gets really slow when trying to browse the internet.</label>
+                    <p> <br></p>
+                    <!-- Additional elements for ticket status, assigning to an employee, etc. -->
+                    <span style="font-weight: bold;"><label for="ticket-status">Change Status:</label></span>
+                    <select id="ticket-status">
+                        <option value="open">Open</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="closed">Closed</option>
+                    </select>
+
+                    <span style="font-weight: bold;"><label for="assign-employee">Assign to Employee:</label></span>
+                    <input type="text" id="assign-employee" placeholder="Employee Name">
+
+                    <span style="font-weight: bold;"><label for="resolution">Resolution:</label></span>
+                    <textarea id="resolution" placeholder="Enter resolution..." rows="4"></textarea>
+                    
+                    <div class="ticket-actions">
+                        <button onclick="markAsComplete('ticket-003')">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-item" id="ticket-004">
+                <div class="arrow" onclick="toggleTicketDetails('ticket-004')"></div>
+                <p><span style="font-weight: bold;">Ticket ID:</span> 004</p>
+                <div class="details">
+                    <span style="font-weight: bold;"><label for="assign-employee">Description:</span> Update software to the latest version, check for system requirements, reinstall the application, or seek support from the software vendor</label>
+                    <p> <br></p>
+                    <!-- Additional elements for ticket status, assigning to an employee, etc. -->
+                    <span style="font-weight: bold;"><label for="ticket-status">Change Status:</label></span>
+                    <select id="ticket-status">
+                        <option value="open">Open</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="closed">Closed</option>
+                    </select>
+
+                    <span style="font-weight: bold;"><label for="assign-employee">Assign to Employee:</label></span>
+                    <input type="text" id="assign-employee" placeholder="Employee Name">
+
+                    <span style="font-weight: bold;"><label for="resolution">Resolution:</label></span>
+                    <textarea id="resolution" placeholder="Enter resolution..." rows="4"></textarea>
+                    
+                    <div class="ticket-actions">
+                        <button onclick="markAsComplete('ticket-004')">Update</button>
+                    </div>
+                </div>
+            </div>
+            
+        
+            <script>
+                function toggleTicketDetails(ticketId) {
+                    var ticket = document.getElementById(ticketId);
+                    ticket.classList.toggle('expanded');
+                }
+        
+                function markAsComplete(ticketId) {
+                    // Your logic for marking the ticket as complete
+                    var selectedStatus = document.getElementById("ticket-status").value;
+                    var assignedEmployee = document.getElementById("assign-employee").value;
+                    var resolution = document.getElementById("resolution").value;
+        
+                    console.log("Ticket marked as complete. Status: " + selectedStatus + ", Assigned to: " + assignedEmployee);
+                    console.log("Resolution: " + resolution);
+        
+                    // Redirect to the confirmation page
+                    window.location.href = 'Confirmation.html';
+                }
+        
+                function goToHomePage() {
+                    // Your logic for navigating to the home page
+                    window.location.href = 'Home Page.html';
+                }
+            </script>
+        
+        </body>
+        </html>

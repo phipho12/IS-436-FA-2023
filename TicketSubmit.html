@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Submission</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="ticket-form">
+        <h2>Customer Ticket Submission</h2>
+        <form>
+            <div class="form-group">
+                <label for="customerName">Name:</label>
+                <input type="text" id="customerName" name="customerName" required>
+            </div>
+            <div class="form-group">
+                <label for="customerName">Email:</label>
+                <input type="text" id="customerEmail" name="customerEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="issue">Issue:</label>
+                <textarea id="issue" name="issue" rows="4" required></textarea>
+            </div>
+            <button type="button" onclick="submitTicket()">Submit Ticket</button>
+
+            <!-- Add the new button to link to the ticket status page -->
+            <button type="button" onclick="goToTicketStatusPage()">Check Ticket Status</button>
+        </form>
+    </div>
+
+    <script>
+        function submitTicket() {
+            // Perform actions to submit the ticket
+            // Redirect to the confirmation page or perform other actions as needed
+            window.location.href = 'SubmittedTicket.html';
+        }
+
+        function goToTicketStatusPage() {
+            window.location.href = 'ViewTickets.html';
+        }
+    </script>
+
+</body>
+</html>

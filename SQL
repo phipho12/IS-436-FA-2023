@@ -1,0 +1,126 @@
+-- Create Open Tickets table
+CREATE TABLE Open_Tickets (
+    ticket_id INT PRIMARY KEY,
+    customer_name VARCHAR(50),
+    status VARCHAR(20),
+    description VARCHAR(255),
+    resolution VARCHAR(255)
+);
+
+-- Create Assigned Tickets table
+CREATE TABLE Assigned_Tickets (
+    ticket_id INT PRIMARY KEY,
+    customer_name VARCHAR(50),
+    status VARCHAR(20),
+    description VARCHAR(255),
+    resolution VARCHAR(255)
+);
+
+-- Create Closed Tickets table
+CREATE TABLE Closed_Tickets (
+    ticket_id INT PRIMARY KEY,
+    customer_name VARCHAR(50),
+    status VARCHAR(20),
+    description VARCHAR(255),
+    resolution VARCHAR(255)
+);
+
+-- Insert data into Open_Tickets table
+INSERT INTO Open_Tickets (ticket_id, customer_name, status, description, resolution)
+VALUES (1, 'Alice Johnson', 'Open', 'Having trouble connecting to the Internet', 'N/A');
+
+INSERT INTO Assigned_Tickets (ticket_id, customer_name, status, description, resolution)
+VALUES (2, 'Marcus Rodriguez', 'In Progress', 'My computer crashes every time I launch the software.', 'No fix yet');
+
+
+-- Insert data into Closed_Tickets table
+INSERT INTO Closed_Tickets (ticket_id, customer_name, status, description, resolution)
+VALUES (3, 'Emily Turner', 'Closed', 'My computer gets really slow when trying to browse the internet. Upgrade RAM, close unnecessary programs, run antivirus scans, and perform regular system maintenance tasks like disk cleanup and defragmentation.', NULL);
+
+INSERT INTO Closed_Tickets (ticket_id, customer_name, status, description, resolution)
+VALUES (4, 'Dylan Patel', 'Closed', 'I can Install this program from the website. Update software to the latest version, check for system requirements, reinstall the application, or seek support from the software vendor.', NULL);
+
+CREATE TABLE IT_Employee (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    dob DATE NOT NULL,
+    phone_number VARCHAR(15),
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+
+INSERT INTO IT_Employee (employee_id, first_name, last_name, username, password, dob, phone_number, email)
+VALUES
+(1, 'John', 'Doe', 'john.doe', 'password123', TO_DATE('1990-05-15', 'YYYY-MM-DD'), '5551234567', 'john.doe@example.com');
+
+INSERT INTO IT_Employee (employee_id, first_name, last_name, username, password, dob, phone_number, email)
+VALUES
+(2, 'Jane', 'Smith', 'jane.smith', 'securepass', TO_DATE('1988-09-22', 'YYYY-MM-DD'), '5552345678', 'jane.smith@example.com');
+
+INSERT INTO IT_Employee (employee_id, first_name, last_name, username, password, dob, phone_number, email)
+VALUES
+(3, 'Michael', 'Johnson', 'michael.johnson', 'pass123', TO_DATE('1995-07-10', 'YYYY-MM-DD'), '5553456789', 'michael.j@example.com');
+
+INSERT INTO IT_Employee (employee_id, first_name, last_name, username, password, dob, phone_number, email)
+VALUES
+(4, 'Emily', 'Davis', 'emily.davis', 'strongpassword', TO_DATE('1987-12-03', 'YYYY-MM-DD'), '5554567890', 'emily.davis@example.com');
+
+INSERT INTO IT_Employee (employee_id, first_name, last_name, username, password, dob, phone_number, email)
+VALUES
+(5, 'Daniel', 'Brown', 'daniel.brown', 'danielpass', TO_DATE('1992-04-28', 'YYYY-MM-DD'), '5555678901', 'daniel.b@example.com');
+
+
+
+SELECT * FROM IT_Employee;
+
+-- Show all values in Open_Tickets
+SELECT * FROM Open_Tickets;
+
+-- Show all values in Assigned_Tickets
+SELECT * FROM Assigned_Tickets;
+
+-- Show all values in Closed_Tickets
+SELECT * FROM Closed_Tickets;
+
+
+
+-- Create table for available employees
+CREATE TABLE Available_Employees (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50)
+);
+
+-- Create table for unavailable employees
+CREATE TABLE Unavailable_Employees (
+    employee_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50)
+);
+
+
+-- Insert data into Available_Employees
+INSERT INTO Available_Employees (employee_id, first_name, last_name)
+VALUES (1, 'John', 'Doe');
+
+INSERT INTO Available_Employees (employee_id, first_name, last_name)
+VALUES (2, 'Jane', 'Smith');
+
+INSERT INTO Available_Employees (employee_id, first_name, last_name)
+VALUES (3, 'Michael', 'Johnson');
+
+-- Insert data into Unavailable_Employees
+INSERT INTO Unavailable_Employees (employee_id, first_name, last_name)
+VALUES (4, 'Emily', 'Davis');
+INSERT INTO Unavailable_Employees (employee_id, first_name, last_name)
+VALUES(5, 'Daniel', 'Brown');
+
+
+-- Show all values in Assigned_Tickets
+SELECT * FROM Available_Employees;
+
+-- Show all values in Closed_Tickets
+SELECT * FROM Unavailable_Employees;
